@@ -1,11 +1,13 @@
 #!/bin/bash
 apt-get update
-apt-get install -y subversion
-apt-get install git
+apt-get install -y subversion git
+
 /usr/sbin/useradd -m -u 1536 judge
 cd /home/judge/
 
-svn co https://github.com/zhblue/hustoj/trunk/trunk/  src
+#svn co https://github.com/zhblue/hustoj/trunk/trunk/  src
+git clone https://github.com/Kuril951/SSGOJ.git src
+
 apt-get install -y make flex g++ clang libmysqlclient-dev libmysql++-dev php-fpm nginx mysql-server php-mysql php-gd php-zip fp-compiler openjdk-8-jdk mono-devel php-mbstring php-xml
 
 USER=`cat /etc/mysql/debian.cnf |grep user|head -1|awk  '{print $3}'`
@@ -76,7 +78,3 @@ fi
 ln -s /usr/bin/mcs /usr/bin/gmcs
 
 /usr/bin/judged
-
-cd /home/judged/src/
-rm -rf ./web
-svn co https://github.com/Kuril951/SSGOJ/trunk/web  web
