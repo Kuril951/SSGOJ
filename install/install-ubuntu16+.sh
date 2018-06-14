@@ -1,14 +1,20 @@
 #!/bin/bash
 apt-get update
-apt-get install -y subversion git
+apt-get install -y subversion git unzip
 
 /usr/sbin/useradd -m -u 1536 judge
 cd /home/judge/
 
-#svn co https://github.com/zhblue/hustoj/trunk/trunk/  src
 git clone https://github.com/Kuril951/SSGOJ.git src
 
 apt-get install -y make flex g++ clang libmysqlclient-dev libmysql++-dev php-fpm nginx mysql-server php-mysql php-gd php-zip fp-compiler openjdk-8-jdk mono-devel php-mbstring php-xml
+
+#phpmyadmin
+wget https://files.phpmyadmin.net/phpMyAdmin/4.8.1/phpMyAdmin-4.8.1-all-languages.zip
+unzip phpMyAdmin-4.8.1-all-languages.zip
+mv phpMyAdmin-4.8.1-all-languages ./src/phpmyadmin
+rm phpMyAdmin-4.8.1-all-languages.zip
+
 
 USER=`cat /etc/mysql/debian.cnf |grep user|head -1|awk  '{print $3}'`
 PASSWORD=`cat /etc/mysql/debian.cnf |grep password|head -1|awk  '{print $3}'`
