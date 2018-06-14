@@ -1,6 +1,7 @@
 #!/bin/bash
 apt-get update
 apt-get install -y subversion
+apt-get install git
 /usr/sbin/useradd -m -u 1536 judge
 cd /home/judge/
 
