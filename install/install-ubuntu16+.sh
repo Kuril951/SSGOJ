@@ -12,7 +12,7 @@ apt-get install -y make flex g++ clang libmysqlclient-dev libmysql++-dev php-fpm
 #phpmyadmin
 wget https://files.phpmyadmin.net/phpMyAdmin/4.8.1/phpMyAdmin-4.8.1-all-languages.zip
 unzip phpMyAdmin-4.8.1-all-languages.zip
-mv phpMyAdmin-4.8.1-all-languages ./src/phpmyadmin
+mv phpMyAdmin-4.8.1-all-languages ./src/web/phpmyadmin
 rm phpMyAdmin-4.8.1-all-languages.zip
 
 
