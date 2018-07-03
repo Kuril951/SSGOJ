@@ -176,17 +176,18 @@ if ($len>65536){
 	exit(0);
 }
 
-// last submit
-$now=strftime("%Y-%m-%d %X",time()-10);
-$sql="SELECT `in_date` from `solution` where `user_id`=? and in_date>? order by `in_date` desc limit 1";
-$res=pdo_query($sql,$user_id,$now);
-if (count($res)==1){
+// block succesively submit
+
+// $now=strftime("%Y-%m-%d %X",time()-10);
+// $sql="SELECT `in_date` from `solution` where `user_id`=? and in_date>? order by `in_date` desc limit 1";
+// $res=pdo_query($sql,$user_id,$now);
+// if (count($res)==1){
 	
-		$view_errors="You should not submit more than twice in 10 seconds.....<br>";
-		require("template/".$OJ_TEMPLATE."/error.php");
-		exit(0);
+// 		$view_errors="You should not submit more than twice in 10 seconds.....<br>";
+// 		require("template/".$OJ_TEMPLATE."/error.php");
+// 		exit(0);
 	
-}
+// }
 
 
 if((~$OJ_LANGMASK)&(1<<$language)){
