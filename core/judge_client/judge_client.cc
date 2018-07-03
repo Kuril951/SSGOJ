@@ -2162,6 +2162,7 @@ void watch_solution(pid_t pidApp, char * infile, int & ACflg, int isspj,
 		tmp_usedTime += (ruse.ru_utime.tv_sec * 1000 + ruse.ru_utime.tv_usec / 1000) * cpu_compensation;
 		tmp_usedTime += (ruse.ru_stime.tv_sec * 1000 + ruse.ru_stime.tv_usec / 1000) * cpu_compensation;
 		if(tmp_usedTime >= time_lmt*1000){
+			ACflg = OJ_TL;
 			ptrace(PTRACE_KILL, pidApp, NULL, NULL);
 			break;
 		}
