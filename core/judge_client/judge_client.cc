@@ -2156,6 +2156,11 @@ void watch_solution(pid_t pidApp, char * infile, int & ACflg, int isspj,
 
 		// check the system calls
 		ptrace(PTRACE_GETREGS, pidApp, NULL, &reg);
+		// time limits
+		if((long)reg.REG_SYSCALL == -240){
+			ptrace(PTRACE_KILL, pidApp, NULL, NULL);
+			break;
+		}
 		if (call_counter[reg.REG_SYSCALL] ){
 			//call_counter[reg.REG_SYSCALL]--;
 		}else if (record_call) {
