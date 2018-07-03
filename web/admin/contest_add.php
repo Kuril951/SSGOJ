@@ -122,7 +122,7 @@ else if(isset($_POST['problem2contest'])){
 	
 <div class="container">
 	<form method=POST >
-	<p align=left><?php echo $MSG_TITLE?><input class=input-xxlarge  type=text name=title size=71 value="<?php echo isset($title)?$title:""?>"></p>
+	<p align=left><?php echo $MSG_CONTEST_TITLE?><input class=input-xxlarge  type=text name=title size=71 value="<?php echo isset($title)?$title:""?>"></p>
 	<p align=left><?php echo $MSG_Start?>:
 	<input  class=input-large type=date name='startdate' value='<?php echo date('Y').'-'. date('m').'-'.date('d')?>' size=4 >
 	Hour:<input class=input-mini    type=text name=shour size=2 value=<?php echo date('H')?>>&nbsp;
@@ -131,7 +131,7 @@ else if(isset($_POST['problem2contest'])){
 	<input  class=input-large type=date name='enddate' value='<?php echo date('Y').'-'. date('m').'-'.date('d')?>' size=4 >
 	Hour:<input class=input-mini  type=text name=ehour size=2 value=<?php echo (date('H')+4)%24?>>&nbsp;
 	Minute:<input class=input-mini  type=text name=eminute value=00 size=2 ></p>
-	Public:<select name=private><option value=0><?php echo $MSG_Public?></option>
+	대회 상태:<select name=private><option value=0><?php echo $MSG_Public?></option>
 				    <option value=1><?php echo $MSG_Private?></option>
                </select>
 	<?php echo $MSG_PASSWORD?>:<input type=text name=password value="">

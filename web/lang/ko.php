@@ -63,6 +63,7 @@
 	$MSG_SEARCH="Search";
 	$MSG_PROBLEM_ID="문제 ID";
 	$MSG_TITLE="문제명";
+	$MSG_CONTEST_TITLE="대회 명";
 	$MSG_SOURCE="출처";
 	$MSG_SUBMIT="제출";
 	
