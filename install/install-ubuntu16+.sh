@@ -83,4 +83,11 @@ else
 fi
 ln -s /usr/bin/mcs /usr/bin/gmcs
 
-/usr/bin/judged
+# demon
+cd /etc/init.d/
+echo -e '#!/bin/bash\njudged' > auto_run_judged.sh
+chmod 755 auto_run_judged.sh
+update-rc.d auto_run_judged.sh defaults
+
+reboot
+
