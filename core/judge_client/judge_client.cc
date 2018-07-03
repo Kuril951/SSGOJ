@@ -2024,6 +2024,7 @@ void watch_solution(pid_t pidApp, char * infile, int & ACflg, int isspj,
 	struct user_regs_struct reg;
 	struct rusage ruse;
 	int first = true;
+	int tmp_usedTime = 0;
 	if(topmemory==0) 
 			topmemory= get_proc_status(pidApp, "VmRSS:") << 10;
 	while (1) {
@@ -2157,7 +2158,10 @@ void watch_solution(pid_t pidApp, char * infile, int & ACflg, int isspj,
 		// check the system calls
 		ptrace(PTRACE_GETREGS, pidApp, NULL, &reg);
 		// time limits
-		if((long)reg.REG_SYSCALL == -240){
+		tmp_usedTime = 0;
+		tmp_usedTime += (ruse.ru_utime.tv_sec * 1000 + ruse.ru_utime.tv_usec / 1000) * cpu_compensation;
+		tmp_usedTime += (ruse.ru_stime.tv_sec * 1000 + ruse.ru_stime.tv_usec / 1000) * cpu_compensation;
+		if(tmp_usedTime >= time_lmt*1000){
 			ptrace(PTRACE_KILL, pidApp, NULL, NULL);
 			break;
 		}
